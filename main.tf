@@ -1,16 +1,29 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 4.0"
-    }
-  }
-}
+#terraform {
+#  required_providers {
+#    azurerm = {
+#      source  = "hashicorp/azurerm"
+#      version = "~> 4.0"
+#    }
+#  }
+#}
 
-provider "azurerm" {
-  features {}
-}
-
+#provider "azurerm" {
+#  features {}
+#}
+ terraform {
+   required_providers {
+     azurerm = {
+       source  = "hashicorp/azurerm"
+       version = "~> 4.0"
+     }
+   }
+   backend "azurerm" {}
+ }
+    
+ provider "azurerm" {
+   features {}
+   storage_use_azuread = true
+ }
 module "demo" {
    source = "./modules/demo"
       
